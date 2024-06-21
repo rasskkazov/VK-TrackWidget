@@ -1,11 +1,12 @@
 .musicPLay {
-  width: 12rem;
-  height: 12rem;
+  width: 2rem;
+  height: 2rem;
   animation-play-state: paused;
 
   &__line {
     transform-origin: bottom;
     animation: height-playing 1s ease-in-out infinite alternate;
+    fill: white;
   }
 
   &__line1 {
