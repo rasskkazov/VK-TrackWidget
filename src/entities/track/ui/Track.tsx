@@ -1,16 +1,13 @@
 import { ReactNode } from "react";
 import { useTrack } from "../model/useTrack";
+import { TTrack } from "../model/types";
 import { Footnote, Headline } from "@vkontakte/vkui";
 
 import { PlayAnimation } from "@/shared/ui/PlayAnimation/PlayAnimation";
 import Dummy from "@/shared/assets/img/dummy.png";
 import * as classes from "./Track.module.scss";
 
-export type TrackOptions = {
-  song: string;
-  songName: string;
-  artist: string;
-  cover?: string;
+export type TrackOptions = TTrack & {
   moreBtn?: ReactNode;
 };
 

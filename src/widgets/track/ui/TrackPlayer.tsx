@@ -8,9 +8,11 @@ export const TrackPLayer = (props: {
 }) => {
   return (
     <Track
+      id={props.trackPLayerOptions.id}
       artist={props.trackPLayerOptions.artist}
       songName={props.trackPLayerOptions.songName}
       song={props.trackPLayerOptions.song}
+      cover={props.trackPLayerOptions.cover}
       moreBtn={<ChooseTrackOptions />}
     />
   );
