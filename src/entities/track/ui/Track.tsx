@@ -48,7 +48,7 @@ export const Track = (props: TrackOptions) => {
       </div>
 
       <div className={classes.track__tools}>
-        <Footnote className={classes.track__artist}>
+        <Footnote className={classes.track__time}>
           {!isPlaying && !isActive && duration}
           {isPlaying && currentTime}
           {!isPlaying && isActive && currentTime}
