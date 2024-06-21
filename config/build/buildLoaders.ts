@@ -68,5 +68,10 @@ export function buildLoaders({ mode }: BuildOptions): ModuleOptions["rules"] {
     ],
   };
 
-  return [cssLoader, tsLoader, assetLoader, svgLoader];
+  const mp3Loader = {
+    test: /\.mp3$/,
+    type: "asset/resource",
+  };
+
+  return [cssLoader, tsLoader, assetLoader, svgLoader, mp3Loader];
 }
