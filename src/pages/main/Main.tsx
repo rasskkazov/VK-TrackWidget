@@ -1,14 +1,12 @@
-import { TrackPLayer } from "@/widgets";
-import * as classes from "./Main.module.scss";
-
-import { List, Cell, Avatar } from "@vkontakte/vkui";
+import { TrackList } from "@/widgets";
 import { TTrack } from "@/entities";
 import song1 from "@/shared/assets/music/Arash - Temptation.mp3";
 import song2 from "@/shared/assets/music/Britney Spears - Baby One More Time.mp3";
 import cover2 from "@/shared/assets/img/cover1.jpg";
+import * as classes from "./Main.module.scss";
 
 export const Main = () => {
-  const trackList: TTrack[] = [
+  const tracks: TTrack[] = [
     {
       id: 1,
       songName: "Трек",
@@ -26,13 +24,7 @@ export const Main = () => {
 
   return (
     <div className={classes.container}>
-      <List>
-        {trackList.map((track) => (
-          <Cell key={track.id} draggable>
-            <TrackPLayer trackPLayerOptions={track} />
-          </Cell>
-        ))}
-      </List>
+      <TrackList tracks={tracks} />
     </div>
   );
 };
