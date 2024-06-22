@@ -1,18 +1,13 @@
 import { useState } from "react";
 import { Cell, List } from "@vkontakte/vkui";
 
-import { TTrack } from "@/entities";
+import { TTrack, playerStorage } from "@/entities";
 import { TrackPLayer } from "@/widgets/track/ui/TrackPlayer";
+import { useTrackList } from "../model/useTrackList";
+import { observer } from "mobx-react";
 
-export const TrackList = (props: { tracks: TTrack[] }) => {
-  const [trackList, setTrackList] = useState<TTrack[]>(props.tracks);
-
-  const onDragFinish = ({ from, to }: { from: number; to: number }) => {
-    const _list = [...trackList];
-    _list.splice(from, 1);
-    _list.splice(to, 0, trackList[from]);
-    setTrackList(_list);
-  };
+export const TrackList = observer((props: { tracks: TTrack[] }) => {
+  const { trackList, onDragFinish } = useTrackList(props.tracks);
 
   return (
     <List>
@@ -23,4 +18,4 @@ export const TrackList = (props: { tracks: TTrack[] }) => {
       ))}
     </List>
   );
-};
+});
