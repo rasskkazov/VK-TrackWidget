@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { observer } from "mobx-react";
 import { useTrack } from "../model/useTrack";
 import { TTrack } from "../model/types";
 import { Footnote, Headline } from "@vkontakte/vkui";
@@ -11,7 +12,7 @@ export type TrackOptions = TTrack & {
   moreBtn?: ReactNode;
 };
 
-export const Track = (props: TrackOptions) => {
+export const Track = observer((props: TrackOptions) => {
   const {
     isPlaying,
     isActive,
@@ -19,7 +20,7 @@ export const Track = (props: TrackOptions) => {
     currentTime,
     duration,
     playerRef,
-  } = useTrack();
+  } = useTrack(props.id);
 
   return (
     <div className={classes.track} onClick={handleCardClick}>
@@ -58,4 +59,4 @@ export const Track = (props: TrackOptions) => {
       </audio>
     </div>
   );
-};
+});

@@ -2,10 +2,13 @@ import { useState, useRef, useEffect } from "react";
 
 import { formatTime } from "@/shared/lib/formatTime";
 import * as classes from "../ui/Track.module.scss";
+import { curTrackStorage } from "./CurTrackStorage";
 
-export const useTrack = () => {
+export const useTrack = (trackId: number) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(
+    curTrackStorage.activeTrackId === trackId ? true : false
+  );
   const [currentTime, setCurTime] = useState<string>(null);
   const [duration, setDuration] = useState<string>(null);
 
@@ -58,6 +61,7 @@ export const useTrack = () => {
     if (clickOnInteractive) return;
 
     playerRef.current.focus();
+    curTrackStorage.setActiveTrack(playerRef.current, trackId);
     togglePlay();
   };
 
