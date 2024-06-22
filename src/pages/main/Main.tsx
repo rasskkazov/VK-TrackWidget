@@ -1,6 +1,7 @@
 import { TrackList } from "@/widgets";
 import { TTrack } from "@/entities";
-import song1 from "@/shared/assets/music/Arash - Temptation.mp3";
+import song3 from "@/shared/assets/music/Arash - Temptation.mp3";
+import song1 from "@/shared/assets/music/Eurythmics - Sweet Dreams.mp3";
 import song2 from "@/shared/assets/music/Britney Spears - Baby One More Time.mp3";
 import cover2 from "@/shared/assets/img/cover1.jpg";
 import * as classes from "./Main.module.scss";
@@ -9,8 +10,8 @@ export const Main = () => {
   const tracks: TTrack[] = [
     {
       id: 1,
-      songName: "Трек",
-      artist: "Исполнитель",
+      songName: "Sweet Dreams",
+      artist: "Eurythmics",
       song: song1,
     },
     {
@@ -19,6 +20,12 @@ export const Main = () => {
       artist: "Britney Spears",
       song: song2,
       cover: cover2,
+    },
+    {
+      id: 3,
+      songName: "Это оригинал!!!",
+      artist: "Arash",
+      song: song3,
     },
   ];
 
