@@ -24,7 +24,7 @@ export const Track = (props: TrackOptions) => {
   return (
     <div className={classes.track} onClick={handleCardClick}>
       <div className={classes.track__coverContainer}>
-        <div className={classes.track__cover}>
+        <button className={classes.track__cover}>
           <img src={props.cover ?? Dummy} alt="song-cover" />
           {isActive && (
             <>
@@ -34,7 +34,7 @@ export const Track = (props: TrackOptions) => {
               </div>
             </>
           )}
-        </div>
+        </button>
       </div>
 
       <div className={classes.track__info}>

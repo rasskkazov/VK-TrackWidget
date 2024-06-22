@@ -6,7 +6,7 @@ import * as classes from "../ui/Track.module.scss";
 export const useTrack = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isActive, setIsActive] = useState(false);
-  const [currentTime, setCurrentTime] = useState<string>(null);
+  const [currentTime, setCurTime] = useState<string>(null);
   const [duration, setDuration] = useState<string>(null);
 
   const playerRef = useRef<HTMLAudioElement>();
@@ -15,18 +15,21 @@ export const useTrack = () => {
     const player = playerRef.current;
 
     if (player) {
-      const updateDuration = () => {
-        setDuration(formatTime(player.duration));
-      };
-      const updateCurrentTime = () =>
-        setCurrentTime(formatTime(player.currentTime));
+      const updateDuration = () => setDuration(formatTime(player.duration));
+      const updateCurTime = () => setCurTime(formatTime(player.currentTime));
+      const onPause = () => setIsPlaying(false);
+      const onPlay = () => setIsPlaying(true);
 
-      player.addEventListener("timeupdate", updateCurrentTime);
+      player.addEventListener("timeupdate", updateCurTime);
       player.addEventListener("loadedmetadata", updateDuration);
+      player.addEventListener("pause", onPause);
+      player.addEventListener("play", onPlay);
 
       return () => {
-        player.removeEventListener("timeupdate", updateCurrentTime);
+        player.removeEventListener("timeupdate", updateCurTime);
         player.removeEventListener("loadedmetadata", updateDuration);
+        player.removeEventListener("pause", onPause);
+        player.removeEventListener("play", onPlay);
       };
     }
   }, [playerRef]);
@@ -38,25 +41,23 @@ export const useTrack = () => {
       playerRef.current.play();
       setIsActive(true);
     }
-
     setIsPlaying(!isPlaying);
   };
 
   const handleCardClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const targetElement = e.target as Element;
-    const preventPlayElements = [
+
+    const interactives = [
       `.${classes.track__song}`,
       `.${classes.track__artist}`,
       `.${classes.track__tools}`,
     ];
+    const clickOnInteractive = interactives.some((preventElement) =>
+      targetElement.closest(preventElement)
+    );
+    if (clickOnInteractive) return;
 
-    if (
-      preventPlayElements.some((preventElement) =>
-        targetElement.closest(preventElement)
-      )
-    ) {
-      return;
-    }
+    playerRef.current.focus();
     togglePlay();
   };
 

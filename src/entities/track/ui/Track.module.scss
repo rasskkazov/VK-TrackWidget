@@ -15,7 +15,10 @@
     position: relative;
     width: 4rem;
     height: 4rem;
+    padding: 0;
     overflow: hidden;
+    background-color: inherit;
+    border: none;
     border-radius: 4px;
 
     img {
