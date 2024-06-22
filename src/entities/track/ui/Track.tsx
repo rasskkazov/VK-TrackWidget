@@ -47,9 +47,8 @@ export const Track = observer((props: TrackOptions) => {
 
       <div className={classes.track__tools}>
         <Footnote className={classes.track__time}>
-          {!isPlaying && !isActive && duration}
-          {isPlaying && currentTime}
-          {!isPlaying && isActive && currentTime}
+          {!isActive && duration}
+          {isActive && currentTime}
         </Footnote>
         <div className={classes.track__more}>{props.moreBtn}</div>
       </div>
