@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Cell, List } from "@vkontakte/vkui";
 
-import { TTrack, playerStorage } from "@/entities";
+import { TTrack } from "@/entities";
 import { TrackPLayer } from "@/widgets/track/ui/TrackPlayer";
 import { useTrackList } from "../model/useTrackList";
 import { observer } from "mobx-react";

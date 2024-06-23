@@ -6,29 +6,29 @@ import song2 from "@/shared/assets/music/Britney Spears - Baby One More Time.mp3
 import cover2 from "@/shared/assets/img/cover1.jpg";
 import * as classes from "./Main.module.scss";
 
-export const Main = () => {
-  const tracks: TTrack[] = [
-    {
-      id: 1,
-      songName: "Sweet Dreams",
-      artist: "Eurythmics",
-      song: song1,
-    },
-    {
-      id: 2,
-      songName: "Baby One More Time...",
-      artist: "Britney Spears",
-      song: song2,
-      cover: cover2,
-    },
-    {
-      id: 3,
-      songName: "Это оригинал!!!",
-      artist: "Arash",
-      song: song3,
-    },
-  ];
+const tracks: TTrack[] = [
+  {
+    id: 1,
+    songName: "Sweet Dreams",
+    artist: "Eurythmics",
+    song: song1,
+  },
+  {
+    id: 2,
+    songName: "Baby One More Time...",
+    artist: "Britney Spears",
+    song: song2,
+    cover: cover2,
+  },
+  {
+    id: 3,
+    songName: "Это оригинал!!!",
+    artist: "Arash",
+    song: song3,
+  },
+];
 
+export const Main = () => {
   return (
     <div className={classes.container}>
       <TrackList tracks={tracks} />

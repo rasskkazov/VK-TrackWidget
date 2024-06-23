@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TTrack, playerStorage } from "@/entities";
+import { TTrack } from "@/entities";
 
 export const useTrackList = (tracks: TTrack[]) => {
   const [trackList, setTrackList] = useState<TTrack[]>(tracks);
