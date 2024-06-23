@@ -6,4 +6,5 @@
 git clone https://github.com/rasskkazov/VK-TrackWidget.git
 cd ./VK-TrackWidget
 npm i
+npm run start
 ```
